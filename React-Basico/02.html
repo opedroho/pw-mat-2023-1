@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script>
+        // selecionar o elemento HTML
+        const element = document.querySelector("#meu-elemento");
+
+        // criar um canvas
+        const canvas = document.createElement("canvas");
+
+        // definir o tamanho do canvas
+        canvas.width = element.offsetWidth;
+        canvas.height = element.offsetHeight;
+
+        // adicionar o canvas como filho do elemento HTML
+        element.appendChild(canvas);
+
+        // criar um gradiente linear
+        const gradient = canvas.getContext("2d").createLinearGradient(0, 0, canvas.width, 0);
+
+        // adicionar as cores desejadas ao gradiente
+        gradient.addColorStop(0, "red");
+        gradient.addColorStop(0.5, "green");
+        gradient.addColorStop(1, "blue");
+
+        // desenhar um retângulo usando o gradiente linear
+        canvas.getContext("2d").fillRect(0, 0, canvas.width, canvas.height);
+
+        // definir o estilo de borda do elemento HTML
+        element.style.border = `1px solid ${canvas.toDataURL()}`;
+
+    </script>
+</body>
+
+</html>

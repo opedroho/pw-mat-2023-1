@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script>
+        //Criando um novo elemento <p> via JavaScript
+        let parag = document.createElement('p')
+        parag.textContent = 'Este paragrafo foi criado em javascript'
+
+        //Capturar a div Root
+        const root = document.getElementById('root')
+
+        // Acrescenta  o paragrafo a lista de filhos da div root
+        root.appendChild(parag)
+
+        //criando uma nova div
+        const novaDiv = document.createElement('div')
+
+        novaDiv.textContent = 'Div criada em JavaScript'
+        novaDiv.style.border = '3px red, blue, green'
+        novaDiv.style.background = 'limegreen'
+        novaDiv.style.padding = '10px'
+        novaDiv.style.marginTop = '20px'
+        novaDiv.style.textAlign = 'center'
+        novaDiv.style.maxWidth = '500px'
+        novaDiv.id = 'div-verde'
+        novaDiv.style.borderRadius = '25px'
+
+        root.appendChild(novaDiv)
+
+        // selecionar o elemento HTML
+        const element = document.querySelector("#meu-elemento");
+
+        // criar um canvas
+        const canvas = document.createElement("canvas");
+
+        // definir o tamanho do canvas
+        canvas.width = element.offsetWidth;
+        canvas.height = element.offsetHeight;
+
+        // adicionar o canvas como filho do elemento HTML
+        element.appendChild(canvas);
+
+        // criar um gradiente linear
+        const gradient = canvas.getContext("2d").createLinearGradient(0, 0, canvas.width, 0);
+
+        // adicionar as cores desejadas ao gradiente
+        gradient.addColorStop(0, "red");
+        gradient.addColorStop(0.5, "green");
+        gradient.addColorStop(1, "blue");
+
+        // desenhar um retângulo usando o gradiente linear
+        canvas.getContext("2d").fillRect(0, 0, canvas.width, canvas.height);
+
+        // definir o estilo de borda do elemento HTML
+        element.style.border = `1px solid ${canvas.toDataURL()}`;
+
+
+
+    </script>
+</body>
+
+</html>
