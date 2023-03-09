@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,12 +8,12 @@
     <style>
         .formata {
             font-family: 'Courier New', monospace;
-            color: blue;
+            color:blue;
             background-color: powderblue;
-            text-align: center;
+            text-align:center;
             margin-bottom: 15px;
-        }
 
+        }
         .alerta {
             border-radius: 6px;
             border: 2px solid tomato;
@@ -24,31 +23,51 @@
         }
     </style>
 </head>
-
 <body>
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <div id="root"></div>
-
+    
     <script type="text/babel">
         //div1, criada com React "cru"
         const div1 = React.createElement('div', {
             className: 'formata',
             children: 'Div criada com React "cru"'
         })
+    
+    //o Babel transforma parecido com o de cima
+    //div2, criada com JSX e processada pelo Babel
+    const div2 = <div className="formata"> Div criada com JSX+Babel</div>
 
-        //div2, criada com JSX e processada pelo Babel
-        const div2 = <div className="alerta"> Div criada com JSX+Babel</div>
+    const classeCss = 'formata'
+    const conteudo = 'Div criada com JSX+BAbel e variáveis interpoladas'
 
-        const container = React.createElement('div', null, [div1, div2])
+    const div3 = <div className={classeCss}>{conteudo} </div>
 
-        const root = ReactDOM.createRoot(document.getElementById('root'))
-        root.render(container)
+    const props = {
+        className: 'formata',
+        children: 'Div criada com JSX+BAbel e espalhamento de props'
+    }
+
+    const div4 = <div {...props}></div>
+    //também dá para fazer assim: <div {...props} />
+
+   // const container = React.createElement('div', null, [div1, div2, div3, div4])
+
+   //Container usando JSX
+   const container =
+   <div>
+     {div1}
+     {div2}
+     {div3}
+     {div4}
+   </div>
+   
+    const root = ReactDOM.createRoot(document.getElementById('root'))
+    root.render(container)
 
     </script>
-
 </body>
-
 </html>
