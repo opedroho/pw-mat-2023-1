@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 01</title>
+    <style>
+        .texto1 {
+            border-radius: 4px;
+            border: 3px dotted red;
+            background-color: rgb(140, 240, 210);
+            padding: 10px;
+            text-align: center;
+            font-family: Calibri, Arial, Sans;
+            margin-bottom: 10px;
+        }
+
+        .texto2 {
+            border: 2px solid indigo;
+            background-color: yellow;
+            border-radius: 8px;
+            color: black;
+            box-shadow: 2px 2px 6px rgba(red, green, blue, alpha);
+            padding: 12px;
+            text-align: center;
+            font-family: Cambria, 'Times New Roman', serif;
+            margin-bottom: 16px;
+        }
+
+    </style>
+</head>
+
+<body style="background-color: rgb(33, 68, 89);">
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const Componentes = ({ nome, sobrenome, dia, mes, ano, ...props }) => <>
+            <p {...props} className="texto1">Hello, {nome} {sobrenome}</p>
+            <p {...props} className="texto2">Sua data de nascimento é {dia + '/' + mes + '/' + ano}</p>
+            <div {...props} className="texto2">Idade atual: {2023 - ano} anos</div>
+        </>
+
+        const container =
+            <>
+                <Componentes nome="Fausto" sobrenome="Cintra" dia="23" mes="09" ano="1991" />
+            </>
+
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+        root.render(container)
+
+    </script>
+</body>
+
+</html>
