@@ -1,0 +1,21 @@
+.box{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.box--large{
+    width: 270px;
+    height: 270px;
+    border-radius: 15px;
+    box-shadow: 5px black;
+}
+.box--medium{
+    width: 180px;
+    height: 180px;
+}
+.box--small{
+    width: 90px;
+    height: 90px;
+}

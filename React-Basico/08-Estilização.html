@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSSDEF.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        /*
+        Para especificar estilos CSS no JSX, é necessario atentar-se para as seguintes regras:
+        1) O nome das propriedades que nao podem conter Hifén, deve-se usar a conversão camelCase em vez disso. 
+        Ex: background-color deve ser escrito backgroundcolor.
+        2) Todos os valores de propriedades qque nao forem 100% numericas devem vir entre aspas. Ex: 30px => '30px'
+        3) As diferentes propriedades sao separadas por VIRGULA (e nao por Ponto e Virgula(;))
+        4) 
+        */
+
+        //Estilo JSX para Css                                               CSS:
+        const estilo1 = {
+            backgrouindColor: 'orange',                                 //backgrouind-color: orange
+            frontSize: '30px',
+            frontFamily: '"Courier New", monospace',
+            border: '4px dotted blue'
+        }
+
+        /*
+        Abaixo, um componente de caixa altamente personalizada. Recebe tento props personalizadas
+        (style e size) quanto props generiacas (...props).
+        Alem disso, provem um valor padrao para a props size caso o calor desta nao tenha sido especificado.
+        */
+
+        const BoxItalic = ({ style, size = 'small', ...props }) =>
+            <div
+                className={`box box--${size}`}
+                style = { { frontStyle: 'italic', ...style} }
+                {...props}
+                />
+            
+            const container = 
+            <>
+            {/* Usando o componente BoxItalix. No primeiro caso, não será especificado o valor da prop size.
+                Nesse caso, sera criado com size = small.*/}
+            {/**/}
+                <BoxItalic
+              
+                id = "boxitalic1"
+                style = {{
+                    backgroundColor: 'violet',
+                    color: 'beige'
+                }}
+                >
+                Box italic 1
+                </BoxItalic>
+
+                <BoxItalic
+                    id = "boxitalic2"
+                    children = "Box Italic 2"
+                    title = "Itálico desligado"
+                    size = "large"
+                    style = {{
+                        borderColor: 'orange',
+                        color: 'white',
+                        backgroundColor: 'chocolate',
+                        frontStyle: 'normal'
+                    }}
+                    />
+                </>
+
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+        root.render(container)
+    </script>
+</body>
+
+</html>
