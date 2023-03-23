@@ -8,8 +8,8 @@
 .box--large{
     width: 270px;
     height: 270px;
-    border-radius: 15px;
-    box-shadow: 5px black;
+    border-radius: 5px;
+    box-shadow: 5px rgb(192, 184, 184);
 }
 .box--medium{
     width: 180px;
