@@ -19,17 +19,21 @@
         function Form() {
 
             let nome, maiusc
+            //criando referencias para elementos do componente com useref()
+            const maiuscRef = React.useRef()
+            const nomeRef = React.useRef()
+            const resultadoRef = React.useRef()
 
             function handleChange(event) {
-                maiusc = document.getElementById('maiusc').checked
+                maiusc = maiuscRef.current.checked
 
                 if (maiusc) {
-                    nome = document.getElementById('campo-nome').value.toUpperCase()
+                    nome = nomeRef.current.value.toUpperCase()
                 }
                 else {
-                    nome = document.getElementById('campo-nome').value
+                    nome = nomeRef.current.value
                 }
-                document.getElementById('resultado').textContent = nome
+                resultadoRef.current.textContent = nome
             }
 
             function handleSubmit(event) {
@@ -42,16 +46,22 @@
                     <h1>Formulario no React</h1>
                     <form onSubmit={handleSubmit}>
                         <div>
-                            <label htmlFor="campo-nome">Insira o seu nome:</label> <br />
-                            <input id="campo-nome" onChange={handleChange} />
+                            <label>
+                                <span> Insira o seu nome:</span> <br />
+                                <input ref={nomeRef} onChange={handleChange} />
+                            </label>
+
                         </div>
 
                         <div>
-                            <input type="checkbox" id="maiusc" onChange={handleChange} />
-                            <label htmlFor="maiusc"> Letras Maiusculas</label>
+
+                            <label>
+                                <input type="checkbox" ref={maiuscRef} onChange={handleChange} />
+                                <span>Letras Maiusculas</span>
+                            </label>
                         </div>
 
-                        <div id="resultado"></div>
+                        <div ref={resultadoRef}></div>
 
                         <div>
                             <input type="submit" value="Enviar" />
