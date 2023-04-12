@@ -41,25 +41,32 @@
             const resultadoRef = React.useRef()
 
             function handleChange(event) {
-                dolar = dolarRef.current.value
-                real = realRef.current.value
-                resultado = (parseFloat(real) * parseFloat(dolar)).toFixed(2)
-                resultadoRef.current.textContent = resultado
+                dolar = Number(dolarRef.current.value)
+                real = Number(realRef.current.value)
+                resultado = (parseFloat(real) / parseFloat(dolar)).toFixed(2)
+                
+                //Formatado em USD = Dolar
+                const DolarFmt = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
+                //Formatado em BRL = Real
+                const RealFmt = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
+
+                resultadoRef.current.textContent = DolarFmt.format(resultado)
             }
 
             return (
                 <form>
+                    <h1>Conversor de Real para Dolar</h1>
                     <div>
                         <label>
                             <span>Valores Reais: </span> <br />
-                            <input ref={realRef} onChange={handleChange} />
+                            <input ref={realRef} onChange={handleChange} type="Number" />
                         </label>
                     </div>
                     <br />
                     <div>
                         <label>
                             <span>Cotação do dólar: </span> <br />
-                            <input ref={dolarRef} onChange={handleChange} />
+                            <input ref={dolarRef} onChange={handleChange} type="Number"  />
                         </label>
                     </div>
                     <br />

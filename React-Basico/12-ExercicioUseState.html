@@ -39,23 +39,24 @@
 
             return (
                 <form>
+                    <h1>Conversor de Real para Dolar</h1>
                     <div>
                         <label>
                             <span>Valores Reais (R$): </span> <br />
-                            <input type="Number" onChange={event => setReal(event.target.value)} value={real} />
+                            <input type="Number" onChange={event => setReal(Number(event.target.value))} value={real} />
                         </label>
                     </div>
                     <br />
                     <div>
                         <label>
                             <span>Cotação do dólar (US$): </span> <br />
-                            <input type="Number" onChange={event => setDolar(event.target.value)} value={dolar} />
+                            <input type="Number" onChange={event => setDolar(Number(event.target.value))} value={dolar} />
                         </label>
                     </div>
                     <br />
                     <div>
                         <label>Valor convertido:</label>
-                        <div>{real * dolar}</div>
+                        <div>{(real / dolar).toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</div>
                     </div>
                 </form>
             )
