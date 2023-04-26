@@ -1,6 +1,10 @@
 import './App.css'
+import './style.css'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Exercicio01 from './exercicios/01'
+import Exercicio02 from './exercicios/02'
+import Exercicio03 from './exercicios/03'
+import Exercicio04 from './exercicios/04'
 
 function App() {
 
@@ -19,9 +23,9 @@ function App() {
         <hr />
         <Routes>
           <Route path="/01" element={<Exercicio01 />}/>
-          <Route path="/02" />
-          <Route path="/03" />
-          <Route path="/04" />
+          <Route path="/02" element={<Exercicio02 />}/>
+          <Route path="/03" element={<Exercicio03 />}/>
+          <Route path="/04" element={<Exercicio04 />}/>
           <Route path="/05" />
           <Route path="/06" />
         </Routes>
