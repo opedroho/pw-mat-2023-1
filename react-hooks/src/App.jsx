@@ -5,6 +5,7 @@ import Exercicio01 from './exercicios/01'
 import Exercicio02 from './exercicios/02'
 import Exercicio03 from './exercicios/03'
 import Exercicio04 from './exercicios/04'
+import Home from './pages/Home'
 
 function App() {
 
@@ -12,7 +13,7 @@ function App() {
     <div className="App">
       <h1> Exercicios de React Hooks </h1>
       <BrowserRouter>
-        <ul>
+        <ul className="menu">
           <li> <Link to="/01"> Exercicio 01 </Link> </li>
           <li> <Link to="/02"> Exercicio 02 </Link> </li>
           <li> <Link to="/03"> Exercicio 03 </Link> </li>
@@ -22,10 +23,11 @@ function App() {
         </ul>
         <hr />
         <Routes>
-          <Route path="/01" element={<Exercicio01 />}/>
-          <Route path="/02" element={<Exercicio02 />}/>
-          <Route path="/03" element={<Exercicio03 />}/>
-          <Route path="/04" element={<Exercicio04 />}/>
+          <Route path="/" element={<Home />} />
+          <Route path="/01" element={<Exercicio01 />} />
+          <Route path="/02" element={<Exercicio02 />} />
+          <Route path="/03" element={<Exercicio03 />} />
+          <Route path="/04" element={<Exercicio04 />} />
           <Route path="/05" />
           <Route path="/06" />
         </Routes>
