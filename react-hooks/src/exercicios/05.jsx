@@ -9,7 +9,7 @@ function Tilt({children}) {
     const tiltNode = tiltRef.current
     VanillaTilt.init(tiltNode, {
         max: 45,
-        speed: 400,
+        speed: 200,
         glare: true,
         'max-glare': 0.5,
     })
