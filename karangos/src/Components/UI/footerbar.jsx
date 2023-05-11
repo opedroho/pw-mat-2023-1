@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import CoffeeIcon from '@mui/icons-material/Coffee';
 
 export default function FooterBar() {
   return (
@@ -19,7 +20,7 @@ export default function FooterBar() {
       }}
     >
       <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-          Desenvolvido com café por <a href="mailto:pepedro-henrique@hotmail.com">Pedro H. Oliveira</a> Todos os direitos reservados.
+          Desenvolvido com <CoffeeIcon fontSize='small'/> por <a href="mailto:pepedro-henrique@hotmail.com">Pedro H. Oliveira</a> Todos os direitos reservados.
       </Typography>
     </Toolbar>
   );
