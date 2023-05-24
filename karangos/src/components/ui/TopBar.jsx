@@ -3,7 +3,7 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import logo from '../../../public/karangos-logo-600px.png'
-import MainMenu from './MainMenu'
+import MainMenu from './MainMenu/MainMenu'
 
 export default function TopBar() {
   return (
