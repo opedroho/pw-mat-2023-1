@@ -2,6 +2,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import TopBar from './components/ui/TopBar'
 import theme from './utils/theme'
@@ -12,6 +13,9 @@ import CssBaseline from '@mui/material/CssBaseline'
 
 import Homepage from './pages/Homepage'
 import CustomersList from './pages/CustomersList'
+import CustomersForm from './pages/CustomersForm'
+import CarsList from './pages/CarsList'
+import CarsForm from './pages/CarsForm';
 
 function App() {
   return (
@@ -31,10 +35,12 @@ function App() {
 
               <Routes>
                 <Route path="/" element={ <Homepage /> } />
-              </Routes>
-
-              <Routes>
                 <Route path="/customers" element={ <CustomersList /> } />
+                <Route path="/customers/new" element={ <CustomersForm /> } />
+                <Route path="/customers/:id" element={ <CustomersForm /> } />
+                <Route path="/cars" element={ <CarsList /> } />
+                <Route path="/cars/new" element={ <CarsForm /> } />
+                <Route path="/cars/:id" element={ <CarsForm /> } />
               </Routes>
 
             </Box>

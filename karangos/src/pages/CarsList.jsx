@@ -2,7 +2,6 @@ import React from 'react'
 import Typography from '@mui/material/Typography'
 import Paper from '@mui/material/Paper';
 import { DataGrid } from '@mui/x-data-grid';
-import { format } from 'date-fns'
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import IconButton from '@mui/material/IconButton'
@@ -11,15 +10,15 @@ import Button from '@mui/material/Button'
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import { Link } from 'react-router-dom'
 
-export default function CustomersList() {
+export default function CarsList() {
 
   const [state, setState] = React.useState({
-    customers: {}
+      car: {}
   })
 
   // Desestruturando as variáveis de estado
   const {
-    customers
+      car
   } = state
 
   // Este useEffect() será executado apenas uma vez, durante o
@@ -30,10 +29,10 @@ export default function CustomersList() {
 
   async function loadData() {
     try {
-      const result = await fetch('https://api.faustocintra.com.br/customers')
+      const result = await fetch('https://api.faustocintra.com.br/cars')
 
       // Requisição OK
-      if(result.ok) setState({...state, customers: await result.json()})
+      if(result.ok) setState({...state, car: await result.json()})
       
       // Requisição com erro
       else throw new Error(`[HTTP ${result.status}] ${result.statusText}`)
@@ -48,46 +47,57 @@ export default function CustomersList() {
   const columns = [
     { field: 'id', headerName: 'ID', width: 90 },
     {
-      field: 'name',
-      headerName: 'Nome',
-      width: 300
-    },
-    {
-      field: 'ident_document',
-      headerName: 'CPF',
+      field: 'brand',
+      headerName: 'Marca',
       align: 'center',
       headerAlign: 'center',
       width: 150
     },
     {
-      field: 'birth_date',
-      headerName: 'Data nasc.',
+      field: 'model',
+      headerName: 'Modelo',
       align: 'center',
       headerAlign: 'center',
-      width: 100,
-      valueFormatter: params => {
-        if(params.value) return format(new Date(params.value), 'dd/MM/yyyy')
-        else return ''
+      width: 150
+    },
+    {
+      field: 'color',
+      headerName: 'Cor',
+      align: 'center',
+      headerAlign: 'center',
+      width: 150
+    },
+    {
+      field: 'year_manufacture',
+      headerName: 'Ano de fabricação.',
+      align: 'center',
+      headerAlign: 'center',
+      width: 150,
+    },
+    {
+      field: 'imported',
+      headerName: 'Importado',
+      align: 'center',
+      headerAlign: 'center',
+      width: 150,
+      valueGetter: params => {
+        if(params.value == 1) return 'Sim'
+        else return 'Não'
       }
     },
     {
-      field: 'city',
-      headerName: 'Município/UF',
-      width: 300,
-      // Colocando dois campos na mesma célula
-      valueGetter: params => params.row.city + '/' + params.row.uf
-    },
-    {
-      field: 'phone',
-      headerName: 'Celular',
+      field: 'plates',
+      headerName: 'Placas',
       align: 'center',
       headerAlign: 'center',
       width: 150
     },
     {
-      field: 'email',
-      headerName: 'E-mail',
-      width: 200
+      field: 'selling_price',
+      headerName: 'Preço de venda',
+      align: 'center',
+      headerAlign: 'center',
+      width: 150
     },
     {
       field: 'edit',
@@ -122,7 +132,7 @@ export default function CustomersList() {
     if(confirm('Deseja realmente excluir este item?')) {
       try {
         // Faz a chamada ao back-end para excluir o cliente
-        const result = await fetch(`https://api.faustocintra.com.br/customers/${id}`, {
+        const result = await fetch(`https://api.faustocintra.com.br/cars/${id}`, {
           method: 'DELETE'
         })
         // Se a exclusão tiver sido feita com sucesso, atualiza a listagem
@@ -138,7 +148,7 @@ export default function CustomersList() {
   return (
     <>
       <Typography variant="h1" sx={{ mb: '50px' }}>
-        Listagem de clientes
+        Listagem de Carros
       </Typography>
 
       <Box sx={{
@@ -153,14 +163,14 @@ export default function CustomersList() {
             size="large"
             startIcon={<AddBoxIcon />}
           >
-            Cadastrar novo cliente
+            Cadastrar novo Carro
           </Button>
         </Link>
       </Box>
 
       <Paper elevation={4} sx={{ height: 400, width: '100%' }}>
         <DataGrid
-          rows={customers}
+          rows=   {car}
           columns={columns}
           initialState={{
             pagination: {
