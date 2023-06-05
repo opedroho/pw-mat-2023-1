@@ -11,7 +11,7 @@ import AddBoxIcon from '@mui/icons-material/AddBox';
 import { Link } from 'react-router-dom'
 
 export default function CarsList() {
-
+  // Criando variavel de estado com o objeto vazio car
   const [state, setState] = React.useState({
       car: {}
   })
@@ -45,6 +45,13 @@ export default function CarsList() {
   }
 
   const columns = [
+      // Configuração das colunas da tabela de dados
+      // Cada objeto representa uma coluna
+      // field: o campo no objeto de dados
+      // headerName: o cabeçalho da coluna na tabela
+      // align: alinhamento do conteúdo da coluna
+      // headerAlign: alinhamento do cabeçalho da coluna
+      // width: largura da coluna
     { field: 'id', headerName: 'ID', width: 90 },
     {
       field: 'brand',
@@ -80,6 +87,7 @@ export default function CarsList() {
       align: 'center',
       headerAlign: 'center',
       width: 150,
+      // Esta função faz com que os 0 e 1, sejam representados como Não e Sim
       valueGetter: params => {
         if(params.value == 1) return 'Sim'
         else return 'Não'
@@ -105,6 +113,7 @@ export default function CarsList() {
       headerAlign: 'center',
       align: 'center',
       width: 90,
+      // Renderização personalizada para exibir um botão de edição
       renderCell: params =>
         <Link to={'./' + params.id}>
           <IconButton aria-label="Editar">
@@ -118,6 +127,7 @@ export default function CarsList() {
       headerAlign: 'center',
       align: 'center',
       width: 90,
+      // Renderização personalizada para exibir um botão de exclusão
       renderCell: params =>
         <IconButton 
           aria-label="Excluir"
@@ -127,7 +137,7 @@ export default function CarsList() {
         </IconButton>
     }
   ];
-
+  // Criando função para deletar itens
   async function handleDeleteButtonClick(id) {
     if(confirm('Deseja realmente excluir este item?')) {
       try {
@@ -156,6 +166,7 @@ export default function CarsList() {
         justifyContent: 'right',
         mb: '25px'  // margin-bottom
       }}>
+        {/* Link para a página de cadastro de um novo carro */}
         <Link to="new">
           <Button 
             variant="contained" 
@@ -167,8 +178,9 @@ export default function CarsList() {
           </Button>
         </Link>
       </Box>
-
+      
       <Paper elevation={4} sx={{ height: 400, width: '100%' }}>
+        {/* Tabela de dados usando o componente DataGrid do Material-UI */}
         <DataGrid
           rows=   {car}
           columns={columns}

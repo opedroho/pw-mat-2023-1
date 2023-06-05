@@ -4,20 +4,25 @@ import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom'
-import Divider from '@mui/material/Divider'
 
 export default function MainMenu() {
+  // Define o estado do anchorEl para controlar o menu
   const [anchorEl, setAnchorEl] = React.useState(null);
+  // Verifica se o menu está aberto com base no valor do anchorEl
   const open = Boolean(anchorEl);
+  // Função para lidar com o clique no ícone do menu
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
+  // Função para fechar o menu
   const handleClose = () => {
     setAnchorEl(null);
   };
 
   return (
     <div>
+      {/* Ícone do menu */}
       <IconButton 
         id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}
@@ -32,6 +37,7 @@ export default function MainMenu() {
         <MenuIcon />
       </IconButton>
       
+      {/* Menu */}
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
@@ -41,6 +47,7 @@ export default function MainMenu() {
           'aria-labelledby': 'basic-button',
         }}
       >
+        {/* Item do menu - Página inicial */}
         <MenuItem divider
           onClick={handleClose}
           component={Link}
@@ -49,6 +56,7 @@ export default function MainMenu() {
           Página inicial
         </MenuItem>
         
+        {/* Item do menu - Clientes */}
         <MenuItem 
           onClick={handleClose}
           component={Link}
@@ -57,6 +65,7 @@ export default function MainMenu() {
           Clientes
         </MenuItem>
 
+        {/* Item do menu - Carros */}
         <MenuItem 
           onClick={handleClose}
           component={Link}

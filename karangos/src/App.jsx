@@ -20,7 +20,7 @@ import CarsForm from './pages/CarsForm';
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter> {/* Componente para envolver as rotas */}
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Box sx={{ 
@@ -33,14 +33,14 @@ function App() {
               margin: '25px 25px 55px 25px'
             }}>
 
-              <Routes>
-                <Route path="/" element={ <Homepage /> } />
-                <Route path="/customers" element={ <CustomersList /> } />
-                <Route path="/customers/new" element={ <CustomersForm /> } />
-                <Route path="/customers/:id" element={ <CustomersForm /> } />
-                <Route path="/cars" element={ <CarsList /> } />
-                <Route path="/cars/new" element={ <CarsForm /> } />
-                <Route path="/cars/:id" element={ <CarsForm /> } />
+              <Routes>                                                          {/* Componente para definir as rotas */}
+                <Route path="/" element={ <Homepage /> } />                     {/* Rota para a página inicial */}
+                <Route path="/customers" element={ <CustomersList /> } />       {/* Rota para a lista de clientes */}
+                <Route path="/customers/new" element={ <CustomersForm /> } />   {/* Rota para o formulário de criação de cliente */}
+                <Route path="/customers/:id" element={ <CustomersForm /> } />   {/* Rota para o formulário de edição de cliente */}
+                <Route path="/cars" element={ <CarsList /> } />                 {/* Rota para a lista de carros */}
+                <Route path="/cars/new" element={ <CarsForm /> } />             {/* Rota para o formulário de criação de carro */}
+                <Route path="/cars/:id" element={ <CarsForm /> } />             {/* Rota para o formulário de edição de carro */}
               </Routes>
 
             </Box>
