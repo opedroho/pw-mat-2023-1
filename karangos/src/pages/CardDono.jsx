@@ -7,6 +7,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useState, useEffect } from 'react';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Box } from '@mui/material';
 
 // Definição do componente principal
 export default function ImgMediaCard() {
@@ -42,14 +44,14 @@ export default function ImgMediaCard() {
             Pedro H. Oliveira
           </Typography>
           <Typography variant="body2" color="text.secondary"> {/* Corpo do texto */}
-            Um cara legal, que está cursando ADS - Análise e Desenvolvimento de Software na Fatec de Franca-SP, Brasil <br/>
-            Gosto de gatos e cachorros<br/>
+            Um cara legal, que está cursando ADS - Análise e Desenvolvimento de Software na Fatec de Franca-SP, Brasil <br />
+            Gosto de gatos e cachorros<br />
             Tenho uma paixão pelo mundo GAMER
           </Typography>
         </CardContent>
         <CardActions>
-          <Button startIcon={<ThumbUpAltIcon />} size="small" onClick={incrementLikes}>
-            Like ({likes})
+          <Button startIcon={<FavoriteIcon />} color="primary" size="small" onClick={incrementLikes} sx={{ backgroundColor: 'red', color: 'white' }}>
+            Curtiu ({likes})
           </Button>
         </CardActions>
       </Card>
