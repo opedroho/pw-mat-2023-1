@@ -15,7 +15,8 @@ import Homepage from './pages/Homepage'
 import CustomersList from './pages/CustomersList'
 import CustomersForm from './pages/CustomersForm'
 import CarsList from './pages/CarsList'
-import CarsForm from './pages/CarsForm';
+import CarsForm from './pages/CarsForm'
+import ImgMediaCard from './pages/CardDono';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
                 <Route path="/cars" element={ <CarsList /> } />                 {/* Rota para a lista de carros */}
                 <Route path="/cars/new" element={ <CarsForm /> } />             {/* Rota para o formulário de criação de carro */}
                 <Route path="/cars/:id" element={ <CarsForm /> } />             {/* Rota para o formulário de edição de carro */}
+                <Route path="/ImgMediaCard" element={ <ImgMediaCard /> } />     {/* Rota para a pagina do autor */}  
               </Routes>
 
             </Box>

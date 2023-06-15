@@ -74,6 +74,15 @@ export default function MainMenu() {
           Carros
         </MenuItem>
 
+        {/* Item do menu - Criador */}
+        <MenuItem 
+          onClick={handleClose}
+          component={Link}
+          to="/ImgMediaCard"
+        >
+          Criador
+        </MenuItem>
+
       </Menu>
     </div>
   );
